@@ -34,7 +34,8 @@ class _WeatherUiScreenState extends State<WeatherUiScreen> {
   String visibility = "visibility:";
   String pressure = 'pressure';
   String icon = "icon:";
-  
+
+  TextEditingController nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,12 @@ class _WeatherUiScreenState extends State<WeatherUiScreen> {
       body: Padding(padding: EdgeInsets.all(10),child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(decoration: InputDecoration(
+            TextFormField(
+              controller: nameController,
+              decoration: InputDecoration(
+              border: OutlineInputBorder(
+              ),
+              hintText: "name"
       ),),
       ElevatedButton(onPressed: (){}, child: Text("Get data")),
             SizedBox(height: 10,),
