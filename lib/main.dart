@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 void main(){
   runApp(MyApp());
@@ -34,8 +35,16 @@ class _WeatherUiScreenState extends State<WeatherUiScreen> {
   String visibility = "visibility:";
   String pressure = 'pressure';
   String icon = "icon:";
+  String key = "4e35f9634fc34c03a39153344251102&q";
 
   TextEditingController nameController = TextEditingController();
+
+  Future<void> fetchData () async {
+    final url = Uri.parse("http://api.weatherapi.com/v1/current.json? key = $key = $city}");
+    Map<String,String> header = {"accept":"application/json"};
+    final response = await http.get(url,headers: header);
+    final data = jsonDecode(response.body);
+  }
 
   @override
   Widget build(BuildContext context) {
